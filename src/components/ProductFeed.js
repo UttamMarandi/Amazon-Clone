@@ -1,5 +1,9 @@
 function ProductFeed() {
-  return <div></div>;
+  return <div>
+
+  </div>;
 }
 
 export default ProductFeed;
+
+export async function getServerSideProps(context)
