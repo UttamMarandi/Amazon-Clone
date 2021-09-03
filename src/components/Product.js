@@ -11,7 +11,11 @@ function Product({ id, title, price, description, category, image }) {
   );
   const [hasPrime] = useState(Math.random() < 0.5);
   return (
-    <div className="relative flex flex-col m-5 bg-white z-30 p-10">
+    <div
+      key={id}
+      id={id}
+      className="relative flex flex-col m-5 bg-white z-30 p-10"
+    >
       <p className="absolute top-2 right-2 text-xs text-gray-400">{category}</p>
       <Image src={image} height={200} width={200} objectFit="contain" />
       <h4 className="my-3 ">{title}</h4>
@@ -36,7 +40,7 @@ function Product({ id, title, price, description, category, image }) {
             src="https://dev-sachitstudio.pantheonsite.io/wp-content/uploads/2021/09/prime.png"
             alt=""
           />
-          <p>FREE -Next day delivery</p>
+          <p className="text-xs">FREE -Next day delivery</p>
         </div>
       )}
       <button className="mt-auto button">Add to Basket</button>
