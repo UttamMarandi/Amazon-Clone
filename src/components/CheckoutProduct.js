@@ -31,7 +31,12 @@ function CheckoutProduct({
     dispatch(addToBasket(product));
   };
   const removeItemFromBasket = () => {
-    dispatch(removeFromBasket(id));
+    console.log("id", id);
+    // dispatch(removeFromBasket(id));
+    dispatch(removeFromBasket({ id }));
+    //Bug Fix : - Items not getting removed
+    //So earlier we are passing all the id as payload to the removeFromBasket action
+    //But what it reqquires is the product props , and we are destructuring and passing the id only
   };
   return (
     <div className="grid grid-cols-5 m-2 p-2 bg-white">
@@ -66,7 +71,6 @@ function CheckoutProduct({
           Add to basket
         </button>
         <button className="button" onClick={removeItemFromBasket}>
-          {" "}
           Remove from Basket
         </button>
       </div>
