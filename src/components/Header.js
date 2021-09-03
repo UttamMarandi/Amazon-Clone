@@ -5,9 +5,11 @@ import {
   ShoppingCartIcon,
 } from "@heroicons/react/outline";
 import { signIn, signOut, useSession } from "next-auth/client";
+import { useRouter } from "next/router";
 
 function Header() {
   const [session] = useSession();
+  const router = useRouter();
 
   return (
     <header>
@@ -15,6 +17,7 @@ function Header() {
       <div className="flex items-center p-1 flex-row py-2 bg-red-100">
         <div className="mt-2 flex items-center flex-grow sm:flex-grow-0">
           <Image
+            onClick={() => router.push("/")}
             src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/Amazon.com-Logo.svg/200px-Amazon.com-Logo.svg.png"
             width="150px"
             height="40px"
@@ -39,7 +42,10 @@ function Header() {
             <p>Return</p>
             <p className="font-extrabold">& Orders</p>
           </div>
-          <div className="relative link flex items-center">
+          <div
+            onClick={() => router.push("/checkout")}
+            className="relative link flex items-center"
+          >
             <span className="absolute top-0 right-0 md:right-10 h-4 w-4 bg-yellow-400 rounded-full text-center text-black font-bold">
               0
             </span>
