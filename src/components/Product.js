@@ -25,6 +25,8 @@ function Product({ id, title, price, description, category, image }) {
       description,
       category,
       image,
+      rating,
+      hasPrime,
     };
     console.log(product);
     //sedding the product as payload of action to Redux store i.e basketslice
@@ -57,6 +59,7 @@ function Product({ id, title, price, description, category, image }) {
         <div className="flex items-center space-x-2 -mt-5">
           <img
             className="w-12"
+            loading="lazy"
             src="https://dev-sachitstudio.pantheonsite.io/wp-content/uploads/2021/09/prime.png"
             alt=""
           />
