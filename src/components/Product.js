@@ -9,15 +9,15 @@ const MAX_RATING = 5;
 const MIN_RATING = 1;
 
 function Product({ id, title, price, description, category, image }) {
+  console.log("id", id);
   const dispatch = useDispatch();
 
   const [rating] = useState(
     Math.floor(Math.random() * (MAX_RATING - MIN_RATING + 1)) + MIN_RATING
   );
   const [hasPrime] = useState(Math.random() < 0.5);
-
-  const addItemToBasket = () => {
-    //create an object product that contains the data that needs to be used globally
+  //create an object product that contains the data that needs to be used globally
+  const addItemsToBasket = () => {
     const product = {
       id,
       title,
@@ -26,8 +26,9 @@ function Product({ id, title, price, description, category, image }) {
       category,
       image,
     };
+    console.log(product);
     //sedding the product as payload of action to Redux store i.e basketslice
-    dispatch(addItemToBasket(product));
+    dispatch(addToBasket(product));
   };
   return (
     <div
@@ -62,7 +63,7 @@ function Product({ id, title, price, description, category, image }) {
           <p className="text-xs">FREE -Next day delivery</p>
         </div>
       )}
-      <button onClick={addItemToBasket} className="mt-auto button">
+      <button onClick={addItemsToBasket} className="mt-auto button">
         Add to Basket
       </button>
     </div>
@@ -70,3 +71,8 @@ function Product({ id, title, price, description, category, image }) {
 }
 
 export default Product;
+
+// Bug fix : Maximum stack size exceded , Product variable
+//The reason it was happening was b.c I was dispatching addItemsToBasket instead of addItemToBasket. addItemToBasket is the action and addItemsToBasket is the function that is invoked when we click on button
+//Now if the action is not dispatched than Product variable stores all the id, names and other keys of all the products  which causes maximum stack size to exceed
+//If action is dispatched , the prosuct becomes it's payload , so only the clicked product is dispatched
