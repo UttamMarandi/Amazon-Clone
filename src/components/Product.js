@@ -2,14 +2,33 @@ import Image from "next/dist/client/image";
 import { useState } from "react";
 import { StarIcon } from "@heroicons/react/solid";
 import Currency from "react-currency-formatter";
+import { useDispatch } from "react-redux";
+import { addToBasket } from "../slices/basketSlice";
+
 const MAX_RATING = 5;
 const MIN_RATING = 1;
 
 function Product({ id, title, price, description, category, image }) {
+  const dispatch = useDispatch();
+
   const [rating] = useState(
     Math.floor(Math.random() * (MAX_RATING - MIN_RATING + 1)) + MIN_RATING
   );
   const [hasPrime] = useState(Math.random() < 0.5);
+
+  const addItemToBasket = () => {
+    //create an object product that contains the data that needs to be used globally
+    const product = {
+      id,
+      title,
+      price,
+      description,
+      category,
+      image,
+    };
+    //sedding the product as payload of action to Redux store i.e basketslice
+    dispatch(addItemToBasket(product));
+  };
   return (
     <div
       key={id}
@@ -43,7 +62,9 @@ function Product({ id, title, price, description, category, image }) {
           <p className="text-xs">FREE -Next day delivery</p>
         </div>
       )}
-      <button className="mt-auto button">Add to Basket</button>
+      <button onClick={addItemToBasket} className="mt-auto button">
+        Add to Basket
+      </button>
     </div>
   );
 }

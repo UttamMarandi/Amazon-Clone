@@ -6,10 +6,12 @@ import {
 } from "@heroicons/react/outline";
 import { signIn, signOut, useSession } from "next-auth/client";
 import { useRouter } from "next/router";
+import { useSelector } from "react-redux";
 
 function Header() {
-  const [session] = useSession();
-  const router = useRouter();
+  const [session] = useSession(); //for next-auth
+  const router = useRouter(); //for next-router
+  const items = useSelector(); //for redux
 
   return (
     <header>
@@ -47,7 +49,7 @@ function Header() {
             className="relative link flex items-center"
           >
             <span className="absolute top-0 right-0 md:right-10 h-4 w-4 bg-yellow-400 rounded-full text-center text-black font-bold">
-              0
+              {items.length}
             </span>
             <ShoppingCartIcon className="h-7 md:h-10" />
             <p className="font-extrabold">Basket</p>
