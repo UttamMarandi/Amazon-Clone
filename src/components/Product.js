@@ -9,7 +9,6 @@ const MAX_RATING = 5;
 const MIN_RATING = 1;
 
 function Product({ id, title, price, description, category, image }) {
-  console.log("id", id);
   const dispatch = useDispatch();
 
   const [rating] = useState(

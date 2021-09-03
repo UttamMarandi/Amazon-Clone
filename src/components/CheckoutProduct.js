@@ -31,7 +31,6 @@ function CheckoutProduct({
     dispatch(addToBasket(product));
   };
   const removeItemFromBasket = () => {
-    console.log("id", id);
     // dispatch(removeFromBasket(id));
     dispatch(removeFromBasket({ id }));
     //Bug Fix : - Items not getting removed
