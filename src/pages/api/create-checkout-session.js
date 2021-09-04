@@ -32,9 +32,9 @@ export default async (req, res) => {
   //metadata : we will pass extra data here. email is the email that we destructured from req.body
   const session = await stripe.checkout.sessions.create({
     payment_method_types: ["card"],
-    shipping_rates: [shr_1JVurkSH0lKjEFUemLwNebpr],
+    shipping_rates: ["shr_1JVurkSH0lKjEFUemLwNebpr"],
     shipping_address_collection: {
-      allowed_countries: ["GB", "US", "CA", "IND"],
+      allowed_countries: ["IN", "US", "CA", "GB"],
     },
     line_items: transformedItems,
     mode: "payment",
@@ -48,3 +48,12 @@ export default async (req, res) => {
 
   res.status(200).json({ id: session.id });
 };
+
+//// Bug Fix : Status code 500
+//Two Reasons :
+//a. allowed_countries: ["GB", "US", "CA", "IND"],
+//It should be "IN" instead of IND, all allowed countries for stripe are two characters
+//b.  shipping_rates: [shr_1JVurkSH0lKjEFUemLwNebpr],
+//It should be
+//shipping_rates: ["shr_1JVurkSH0lKjEFUemLwNebpr"],
+//It takes the id as a string and not a variable

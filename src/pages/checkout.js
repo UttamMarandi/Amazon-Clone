@@ -9,18 +9,18 @@ import { loadStripe } from "@stripe/stripe-js";
 import axios from "axios";
 
 const stripePromise = loadStripe(process.env.stripe_public_key);
+//refer the stripe_public_key in next.config.js to the STRIPE_PUBLIC_KEY in our env.local file
 
 function Checkout() {
   const items = useSelector(selectItems); //selectItems is the state of the items in basketSlice
   const total = useSelector(selectTotal);
   //   const session = useSession();
   const [session] = useSession();
-  console.log(session);
 
   //Bug fix : so earlier the conditional button styling was not acting a.c to logic. The reason being we are storing the return value of useSession which can  never be false, instead of destructuring it and accessing only session vale #silly_mistakes
   // console.log("session", session);
 
-  async function createCheckoutSession() {
+  const createCheckoutSession = async () => {
     //asynchronously load stripPromise and store data in stripe
     const stripe = await stripePromise;
     //call the backend to create checkout session
@@ -39,7 +39,7 @@ function Checkout() {
     if (result.error) {
       alert(result.error.message);
     }
-  }
+  };
 
   return (
     <div className="bg-gray-100">
