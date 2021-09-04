@@ -3,8 +3,9 @@ import { getSession, useSession } from "next-auth/client";
 import { db } from "../../firebase";
 import moment from "moment";
 
-function Orders() {
+function Orders({ orders }) {
   const [session] = useSession();
+  console.log("orders", orders);
   return (
     <div>
       <Header />
@@ -56,9 +57,18 @@ export async function getServerSideProps(context) {
       images: order.data().images,
       //   passing timestamp normal will lose the date format, so we use moment library and convert the timestamp data to unix value
       timestamp: moment(order.data().timestamp.toDate()).unix(),
-      items: await stripe.checkout.sessions.listLineItems(order.id, {
-        limit: 100,
-      }).data,
+      items: await new Promise((resolve, reject) => {
+        stripe.checkout.sessions.listLineItems(
+          order.id,
+          { limit: 100 },
+          (err, lineItems) => {
+            if (err) {
+              return reject(err);
+            }
+            resolve(lineItems);
+          }
+        );
+      }),
     }))
   );
 
@@ -69,3 +79,24 @@ export async function getServerSideProps(context) {
     },
   };
 }
+
+//BUG FIX : object` ("[object Promise]") cannot be serialized as JSON
+//previous code :
+// items: await stripe.checkout.sessions.listLineItems(order.id, {
+//         limit: 100,
+//       }).data,
+//the above code was showing the error that `orders[0] items ` is not serializeble b.c it might be undefined
+//here we are awaiting the code , so I thought no issue
+//But the error was coming , so I wrapped the whole code inside a Promise and that worked. No idea why the above code does not work 😑
+// items: await new Promise((resolve, reject) => {
+//         stripe.checkout.sessions.listLineItems(
+//           order.id,
+//           { limit: 100 },
+//           (err, lineItems) => {
+//             if (err) {
+//               return reject(err);
+//             }
+//             resolve(lineItems);
+//           }
+//         );
+//       }),
