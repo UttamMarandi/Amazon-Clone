@@ -57,3 +57,6 @@ export default async (req, res) => {
 //It should be
 //shipping_rates: ["shr_1JVurkSH0lKjEFUemLwNebpr"],
 //It takes the id as a string and not a variable
+
+//webhook secret cli
+//stripe listen --forward-to localhost:3000/api/webhook
