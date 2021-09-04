@@ -7,4 +7,7 @@ module.exports = {
       "dev-sachitstudio.pantheonsite.io",
     ],
   },
+  env: {
+    stripe_public_key: process.env.STRIPE_PUBLIC_KEY,
+  },
 };

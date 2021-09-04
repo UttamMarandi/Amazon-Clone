@@ -5,6 +5,8 @@ import { selectItems, selectTotal } from "../slices/basketSlice";
 import CheckoutProduct from "../components/CheckoutProduct";
 import Currency from "react-currency-formatter";
 import { useSession } from "next-auth/client";
+import { loadStripe } from "@stripe/stripe-js";
+const stripePromise = loadStripe(process.env.stripe_public_key);
 
 function Checkout() {
   const items = useSelector(selectItems); //selectItems is the state of the items in basketSlice
@@ -13,7 +15,14 @@ function Checkout() {
   const [session] = useSession();
 
   //Bug fix : so earlier the conditional button styling was not acting a.c to logic. The reason being we are storing the return value of useSession which can  never be false, instead of destructuring it and accessing only session vale #silly_mistakes
-  console.log("session", session);
+  // console.log("session", session);
+
+  async function createCheckoutSession() {
+    //asynchronously load stripPromise and store data in stripe
+    const stripe = await stripePromise;
+    //call the backend to create checkout session
+  }
+
   return (
     <div className="bg-gray-100">
       <Header />
@@ -71,6 +80,8 @@ function Checkout() {
               </h2>
               {/* conditonal styling using talwind css */}
               <button
+                role="link"
+                onClick={createCheckoutSession}
                 disabled={!session}
                 className={`button mt-2 ${
                   !session &&
