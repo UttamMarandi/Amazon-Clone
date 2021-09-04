@@ -170,3 +170,5 @@ export default async (req, res) => {
 
   res.status(200).json({ id: session.id });
 };
+
+// Bug Fix : Status code 500
