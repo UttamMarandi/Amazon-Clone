@@ -11,7 +11,7 @@ export default function Home({ products }) {
         <title>Amazon 2.0</title>
       </Head>
       <Header />
-      <main className="max-w-screen-xl mx-auto">
+      <main className="max-w-screen-xl mx-auto z-10">
         {/* Banner */}
         <Banner />
         <ProductFeed products={products} />

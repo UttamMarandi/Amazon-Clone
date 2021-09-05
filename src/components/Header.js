@@ -15,7 +15,7 @@ function Header() {
   const items = useSelector(selectItems); //for redux
 
   return (
-    <header className="sticky top-0 z-1000">
+    <header className="sticky top-0 z-40">
       {/* Top menu */}
       <div className="flex items-center p-1 flex-row py-2 bg-red-100 space-x-3">
         <div className="mt-2 flex items-center flex-grow sm:flex-grow-0">
