@@ -40,6 +40,7 @@ function Checkout() {
       alert(result.error.message);
     }
   };
+  console.log("items", items);
 
   return (
     <div className="bg-gray-100">
@@ -55,7 +56,9 @@ function Checkout() {
           />
           <div className="flex flex-col p-5 space-y-10 bg-white">
             <h1 className=" text-2xl md:text-3xl border-b pb-4 ">
-              {items.length ? "Your amazon basket is empty" : "Shopping Basket"}
+              {items.length <= 0
+                ? "Basket is Empty , Please add items"
+                : "Shopping Basket"}
             </h1>
           </div>
           {/* Render add to basket items */}
