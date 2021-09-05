@@ -174,7 +174,7 @@ export default async (req, res) => {
 // Bug Fix : Status code 500
 
 
-//order.js
+//orders.js
 import Header from "../components/Header";
 import { getSession, useSession } from "next-auth/client";
 import { db } from "../../firebase";
