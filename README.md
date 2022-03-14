@@ -1,28 +1,47 @@
-# Installation Steps
+<p align="center">
+  <img src="/public/amazon.png" />
+</p>
 
+# Amazon Clone
 
+The reason I choose to build amazon clone was to build a web app from scratch and to gain experience in all phases of application development cycle. I worked and assembled many different technologies to build a full functioning e-commerce platform.
 
-## Using npm
+# Stack
 
-Run commands
+[NextJS](https://nextjs.org/docs/getting-started)
 
-1) ```npm install```
+[React](https://reactjs.org/docs/getting-started.html)
 
+[Framer Motion](https://www.framer.com/docs/)
 
-2) ```npm run dev```
+[LottieFiles](https://lottiefiles.com/)
 
+# Preview : Link
 
-## Or using yarn
+[Uttam Marandi Portfolio](https://uttam-marandi-portfolio.vercel.app/)
 
-Run commands 
+# Installation
 
-1) ```npm install --global yarn```
+If you want to test the app by running it locally in PC, follow these instructions:
+1.Clone the repo:
 
-2) ```yarn install```
+```
+git clone https://github.com/UttamMarandi/Uttam-Marandi-Portfolio.git
+```
 
-3) ```yarn run dev```
+2.Install the packages :
 
+```
+yarn install
+```
 
-### If you see the window below then you are set to build AMAZON 2.0!
+3.Start local server
 
-![Template Screenshot](TemplateScreenshot.jpg?raw=true "Template Screenshot")
+```
+yarn run dev
+```
+
+# Let's get to know each other
+
+If anyone wants to contact me or want to become friends let's connect.
+message me on [instagram](https://www.instagram.com/uttam.marandi_s/).
