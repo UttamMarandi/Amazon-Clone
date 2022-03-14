@@ -12,9 +12,15 @@ The reason I choose to build amazon clone was to build a web app from scratch an
 
 [React](https://reactjs.org/docs/getting-started.html)
 
-[Framer Motion](https://www.framer.com/docs/)
+[Firebase](https://firebase.google.com/docs)
 
-[LottieFiles](https://lottiefiles.com/)
+[Axios](https://axios-http.com/docs/intro)
+
+[react-currency-formatter](https://www.npmjs.com/package/react-currency-formatter)
+
+[Redux](https://redux.js.org/introduction/getting-started)
+
+[Stripe](https://stripe.com/docs)
 
 # Preview : Link
 
