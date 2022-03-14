@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="/public/amazon.png" />
+  <img src="/public/amazon.png" width="50%"/>
 </p>
 
 # Amazon Clone
