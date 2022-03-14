@@ -15,19 +15,23 @@ function Banner() {
         interval={5000}
       >
         <div>
-          <img loading="lazy" src="../../public/amazon_banner_1.jpg" alt="" />
-        </div>
-        <div>
           <img
             loading="lazy"
-            src="https://dev-sachitstudio.pantheonsite.io/wp-content/uploads/2021/09/amazon-banner-2-scaled.jpg"
+            src="https://raw.githubusercontent.com/UttamMarandi/Amazon-Clone/main/public/amazon_banner_1.jpg"
             alt=""
           />
         </div>
         <div>
           <img
             loading="lazy"
-            src="https://dev-sachitstudio.pantheonsite.io/wp-content/uploads/2021/09/amazon-banner1-scaled.jpg"
+            src="https://raw.githubusercontent.com/UttamMarandi/Amazon-Clone/main/public/amazon_banner_2.jpg"
+            alt=""
+          />
+        </div>
+        <div>
+          <img
+            loading="lazy"
+            src="https://raw.githubusercontent.com/UttamMarandi/Amazon-Clone/main/public/amazon_banner_3.jpg"
             alt=""
           />
         </div>
