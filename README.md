@@ -24,7 +24,7 @@ The reason I choose to build amazon clone was to build a web app from scratch an
 
 # Preview : Link
 
-[Uttam Marandi Portfolio](https://uttam-marandi-portfolio.vercel.app/)
+[Amazon Clone](https://amazon-clone-uttammarandi.vercel.app/)
 
 # Installation
 
